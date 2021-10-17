@@ -1,0 +1,140 @@
+﻿id,game_score,role_title,role_description,role_type,role_alignment
+1,1,Villager,You are a regular villager,Villager,Town
+2,-7,Werewolf,Wake with your team every night and choose a villager to eat. You win when there are the same number of werewolves and villagers (parity).,Wolf,Evil
+3,-10,Werewolf Roleblocker,"You are a werewolf. Additionally, wake at night and choose another player. If they have a power, they won't be able to use it.",Wolf,Evil
+4,-12,Werewolf Corrupter,"You are a werewolf. Additionally, wake at night and choose another player. If they have a power, their power will do the opposite of what it's supposed to.",Wolf,Evil
+5,-9,Werewolf Medic,"You are a werewolf. Each night choose another player, they can't die at night.",Wolf,Evil
+6,-10,Wigilante,You are a werewolf. Every night point at someone and they have a wig on them. They look like a werewolf to the seer.,Wolf,Evil
+7,-9,Werewolf Prophet,"You are a werewolf. Every night, ask the mod if a role is in the game, if they are, get the result of what that role did that night",Wolf,Evil
+8,-9,Werewolf Medium,"Every night, choose a dead player. If they had a power, you may use it tonight.",Wolf,Evil
+9,-12,Werewolf with a shotgun,Once per game you may use your shotgun to kill an additional player,Wolf,Evil
+10,-7,Werewolf Pointer,"Every night, point at another player. Nothing happens.",Wolf,Evil
+11,-9,Werewolf Seer,"Every night, point at another player and be told if they are the village seer or not.",Wolf,Evil
+12,-9,Werewolf Scribe,You are a werewolf. Every night you may send a message to another player. You may sign your name or remain anonymous.,Wolf,Evil
+13,-10,Werewolf Client,You are a werewolf. There is a Private _____ on the town team. You get to choose who their target is every night.,Wolf,Evil
+14,-10,Sith Wolf,"Once per game, If your wolf partner dies before you do AND it would not put the game at parity the following day, choose another player to become your new wolf partner.",Wolf,Evil
+15,-7,Alpha Werewolf,"You are the head werewolf. For the purposes of bus driver-esque roles, you control the vote on who wolves kill.",Wolf,Evil
+16,-11,Shaved Werewolf,"You are a werewolf, you look a villager to the seer.",Wolf,Evil
+17,-8,Sleepy Werewolf,"You are a werewolf. Your wolf partners are _______. You will not be a part of their chat, and you do not wake up at night. If both your partners die, you gain the power to kill.",Wolf,Evil
+18,-8,Werewolf Sponsor,"There is a drunk in this game. During the ___ night, they will become a ___.",Wolf,Evil
+19,-12,Werewolf Hunter,"You are a werewolf. When you die, you get a free kill.",Wolf,Evil
+20,-9,Werewolf Gravekeeper,"You are a werewolf. When all gravekeepers are dead, roles will no longer be revealed on death (your role will be revealed to the town, but you will be the last one).",Wolf,Evil
+21,-6,Werewolf Idiot,You are a werewolf. You must vote down on all votes.,Wolf,Evil
+22,-6,Werewolf Pacifist,always vote up,Wolf,Evil
+23,-5,Guilty Werewolf,You are a werewolf. You win the game only if your wolf teammates win AND you are dead.,Wolf,Evil
+24,-5,Lone Werewolf,"You are a werewolf, but you only win if you are the LAST werewolf remaining. That means you will need to get your werewolf teammates killed at some point.",Wolf,Evil
+25,-5,Werewolf Inspiration,"If the village kills you in any way, the remaining werewolves lose their kill the next night",Wolf,Evil
+26,-6,Werewolf Cub,"You cannot kill people at night (only your wolf partners can). After the ___ night, you gain the power to kill at night.",Wolf,Evil
+27,-5,Self Awarewolf,"While you are alive, the wolf team may only kill players at night that YOU have downvoted.",Wolf,Evil
+28,-5,Wolf-in-Hiding,"You do not know who your wolf partner is. Every night, point at another player and see if they are your wolf teammate. If they are, you are immediately added to wolf chat. Your wolf partner cannot kill you at night.",Wolf,Evil
+29,-4,Minion,You are on the werewolf team. The werewolves are: ________. They do not know that you are on your team.,Minion,Evil
+30,-9,Minion Bus Driver,"You are on the werewolf team. The werewolves are: ________. They do not know that you are on your team. Every night choose two people, what happens to them tonight is swapped. You may choose yourself, but not two nights in a row.",Minion,Evil
+31,-6,Minion Medic,"You are on the werewolf team. The werewolves are: ________. They do not know that you are on your team. Choose someone each night, they can't die or be poisoned this night. You may choose yourself. You cannot choose the same person 2 nights in a row.",Minion,Evil
+32,-7,Minion Roleblocker,"You are on the werewolf team. The werewolves are: ________. They do not know that you are on your team. Additionally, wake at night and choose another player. If they have a power, they won't be able to use it.",Minion,Evil
+33,-9,Minion Corrupter,"You are on the werewolf team. The werewolves are: ________. They do not know that you are on your team. Additionally, wake at night and choose another player. If they have a power, their power will do the opposite of what it's supposed to.",Minion,Evil
+34,7,Seer,Choose someone each night and learn if they are a werewolf or a villager.,Vision,Town
+35,7,Investigator,"Look at two people, mod tells you if they are on the same team, or opposite teams",Vision,Town
+36,4,Prophet,Every night you may ask the mod if a role is in the game,Vision,Town
+37,2,Peeping Tom,"Each night, look at someone and be told if they woke up at night. (If a player has a limited use role, like witch, they will wake up every night until they've used all their shots. Once they've used their powers, they won't wake up on subsequent nights).",Vision,Town
+38,2,Lost Mason,You are a villager. In this village there is another mason. Every night you get to look at someone and the mod will tell you if they're a mason or not.,Vision,Town
+39,2,Forensics Expert,"You are on the village team. Every night choose a player, the mod will tell you if they were targeted tonight, and if so by what role.",Vision,Town
+40,5,The Sleuth,You are on the village team. Every night choose another player. You will be told if they kill people at night.,Vision,Town
+41,5,Private Seer,"You are a seer, but another player decides who you look at each night (that player will message the mod, and the mod will message you). You may refuse if you like, but then you can't use your power the rest of the game.",Vision,Town
+42,1,Examiner,Every night choose another player. Learn if they were pointed at by a werewolf tonight.,Vision,Town
+43,2,Sponsor,"There is a drunk in this game. During the ___ night, they will become a ___.",Vision,Town
+44,4,Medic,"Choose someone each night, they can't die this night. You may choose yourself. You cannot choose the same person 2 nights in a row.",Medic,Town
+45,3,Private Medic,"You are a medic, but another player decides who you save each night (that player will message the mod, and the mod will message you). You may refuse if you like, but then you can't use your power the rest of the game.",Medic,Town
+46,4,Golden Medic Jr.,On night one you may choose another player. That player cannot die at night for the rest of the game.,Medic,Town
+47,1,Medic Jr.,Once per game you get to save someone at night,Medic,Town
+48,2,The Shepherd,"Every night choose another player. That player cannot be roleblocked, corrupted, or bus-driven by werewolves tonight.",Medic,Town
+49,5,Vigilante,You may choose someone each night and kill them. You win with the villagers.,Kill,Town
+50,3,Private Vigilante,"You are a vigilante, but another player decides who (and if) you kill each night (that player will message the mod, and the mod will message you). You may refuse if you like, but then you can't use your power the rest of the game.",Kill,Town
+51,3,Desperado,"You have 1 shot at night per game. If you are ever the last player remaining with a wolf, you win the game for the village instaead of the wolf team.",Kill,Town
+52,3,The Silent,Evey night poison another player. That player will die the next time they vote down on you this game (their vote will still count towards you).,Kill,Town
+53,4,Villager with a Baseball Bat,"Every night target another player. They will die, but only if the werewolves agree for them to die as well. The kill will be flavored as a wolf kill.",Kill,Town
+54,4,Villager with a Big Iron on his Hip,"You may choose someone each night and kill them. You win with the villagers. Another villager: Texas Red, must die before the wolves in order for you to win the game.",Kill,Town
+55,3,Veteran,"Once per game, at night, you may go ""on alert."" If you are on alert, you cannot die tonight, and if someone tries to kill you, they die instead.",Wild,Town
+56,8,Genie,"You get 2 wishes per game. At night you may use a wish to: protect, seer, kill, silence, bus driver (swap what happens to 2 people), roleblock, investigate (look at 2 people and see if they're on the same team), or prophet (ask if a role is in the game, if it is you get to know what they did tonight). You can use each power once.",Wild,Town
+57,5,Downvote Daddy,"You are a villager. Every time there is a downvote during the day, you get a downvote point. At _ downvote points you choose to become either a medic, seer, or vigilante that night (you will be able to use your power immediately).",Wild,Town
+58,4,Soothsayer,"At the beginning of the night, predict who will die that night (or guess ""no one will die""). If you are correct, the next night choose to become medic seer or vigilante.",Wild,Town
+59,6,Ali-Adjacent,"You start the game as a regular villager. If you claim vigilante to the village, you become a medic. If you claim medic, you become a seer. If you claim seer, you become a vigilante. You may only become one of these per game, so choose your claim wisely!",Wild,Town
+60,7,The Trader,"Every night you may seer, medic, or vig another player. If you use a power, you lose your vote the next day (still upvote/downvote each nomination, but the mod will not count your vote).",Wild,Town
+61,4,Lover Scorned,"At the beginning of the game, choose another player. While that player is alive, you have the power to medic people at night. When that player dies, you have the power to shoot people at night (you will gain this power as soon as the player's death is announced to the town).",Wild,Town
+62,3,Man of his Word,"If you upvote 3 times in one day, you gain the power to heal tonight. If you downvote 3 times in one day, you gain the power to shoot tonight.",Wild,Town
+63,4,The Witch,"Once per game, at night, you may shoot someone. Once per game you could protect someone from dying.",Witch,Town
+64,6,The Bog Witch,You get one bus drive and one seer per game. You may not use both powers on the same night.,Witch,Town
+65,4,The Hedge Witch,You get one poison and one prophet per game. You may not use both powers on the same night.,Witch,Town
+66,7,Bus Driver,"choose two people, what happens to them at night is swapped. You may choose yourself, but not two nights in a row.",Chaos,Town
+67,2,Bus Rider,"Once per game you may choose yourself and another player, whatever happens to the two of you tonight is swapped.",Chaos,Town
+68,3,Trolly Driver,"Choose two people, whatever happens to either of them tonight, happens to both of them (target of wolf kill, medic, seer, etc.)",Chaos,Town
+69,3,Judge,"You are a villager, every night choose someone besides you, and their vote doesn't count the next day",Voting,Town
+70,3,Lawyer,"You are a villager, every night choose someone besides you, and their vote counts twice the next day",Voting,Town
+71,3,Campaign Manager,Every night choose another player. The next day on the third vote (if there is a third vote) that player 100% controls the vote (they will not be told this).,Voting,Town
+72,1,Adjudicator,"Every night choose another player. The second vote of the day wil be on that player (immediately after the first vote, the village will be alerted of this. That player gives their defense, and may allow others to talk, then the vote will happen).",Voting,Town
+73,2,Purifier,"You are on the village team. Every night choose another player to purify. This night and for the rest of the game, that player will appear to seers and investigators as their true allignment.",Vision,Town
+74,4,Medium,"Every night, choose a dead player. If they had a power, you may use it tonight.",Wild,Town
+75,2,Ice Cream Seller,"You are a villager. Every night, choose another player. If that player has a power, they get to use it twice tonight (this applies to werewolves as well).",Wild,Town
+76,1,Gravedigger,"You are a villager. Every night, choose a dead player. The mod will tell you what their role was.",Vision,Town
+77,3,Villager with a vacation coming up,"once per game at night you can go on vacation. If you do you cannot be killed that night, and you will not participate in the village (via talking, nominating, or voting) the next day. You will return the following night. If you leaving the village puts the wolves at parity during the day, it will not lose the game for town.",Villager,Town
+78,3,Sandman,"At any point during the day, once per game, announce ""night falls,"" and immediately go to night.",Junior,Town
+79,3,Andman,"Once per game, after someone is downvoted and killed, or after the third nomination of the day, you may announce to the town ""another one"" and a fourth nomination may occur",Junior,Town
+80,6,Copycat,Every night choose another player. Copy their power for tonight (you gain the power to kill if you target the Alpha wolf only).,Chaos,Town
+81,6,Body Snatcher,"You are a villager. When a non-werewolf role dies at night, you gain that power during the next day and/or night (if more than one power role dies at night, gain both powers).",Wild,Town
+82,-1,Cupid,"At the beginning of the game, choose two other player. They are in love, and will be told so. If one of them die, the other dies as well.",Meta,Town
+83,6,Tarot Card Reader,You are on the village team. Every night choose ___ players. The werewolves must choose their kill among those people tonight (they may choose to no-kill).,Chaos,Town
+84,1,Villager Client,"There is a Private ______ in this town. You get to choose their target each night. Message me the name and I will tell them. They may refuse to use their power on this person, but if they do, they lose their power for the rest of the game.",Villager,Town
+85,7,Aladdin,"Every night you may target another player. If they have an active power, steal it for the night. You may only steal powers that are more powerful than previous powers you've stolen.",Voting,Town
+86,2,Memer,Every night choose another player. Choose a meme to send to that player. You may sign your name or remain anonymous.,Communication,Town
+87,2,Scribe,Every night you may send a message to another player. You may sign your name or remain anonymous.,Communication,Town
+88,2,Town Crier,Every night message the mod a message. It will be spam copy-and-pasted in wolf chat.,Communication,Town
+89,3,Mason,"You are a villager, and you also know the other mason is a villager.",Info,Town
+90,2,Diseased Villager,"If the werewolves eat you, they don't get to kill the next night.",Villager,Town
+91,2,Gunslinger,"If you and a werewolf are alive at the end of the game, the village wins instead of the werewolves",Villager,Town
+92,4,Nullifier,"You are a villager. At least one werewolf in this game has an active power. Werewolves will not be able to use ACTIVE powers (IE roleblock, corrupt) while you are alive. Passive wolf powers (wolf idiot, shaved wolf) are unaffected.",Villager,Town
+93,3,Clone,"At the beginning of the game, choose another player. When they die, copy their role for the rest of the game.",Chaos,Town
+94,1,Famous Villager,"You are really famous, everyone has heard of you!",Villager,Town
+95,0,Villager with Ice Cream,"You are a villager. If you are targeted by a role at night, that role will get to use their power a second time (this applies to werewolves as well).",Villager,Town
+96,2,Tipsy,"You start the game as a villager, on the __ night, you will become a ___.",Chaos,Town
+97,1,Drunk,"You start the game as a basic villager. During the ____ night, you will be told your new role.",Chaos,Town
+98,3,Silent Mason,"You are a villager, and you also know the other mason is a villager. You CANNOT claim mason.",Villager,Town
+99,2,Trapper,You will be told every player that targets you every night,Info,Town
+100,2,Lighthouse Keeper,You will be told every role that targets you every night,Info,Town
+101,2,Mathematician,"At the end of every night you will be told how many roles in this game have a limited use power left unused (IE if a medic jr, seer sr, and witch haven't used any of their powers, you will be told ""3"").",Info,Town
+102,-3,Augur,"You are on the village team. Right now choose one of the following roles to be included in the game: Werewolf Corrupter, Werewolf Bus Driver, Werewolf with a shotgun, Shaved Wolf (wolf powers vary)",Wild,Town
+103,3,Hero,"You are a villager. If you are killed by wolves, you survive the next day, and will die the NEXT night (the mod will message you the night you are targeted by wolves).",Villager,Town
+104,7,Zombie,"You are a villager. Also, once you die, you ressurect. You are still a villager, you can vote, but you can't talk.",Villager,Town
+105,4,Charismatic Villager,"You are a villager that can't die during the day (only at night). If you are voted on and it results in a kill, the mod will say ""you live"" and the game continues.",Villager,Town
+106,3,Hunter,"When you die, choose someone to also die.",Kill,Town
+107,4,Super Hunter,"You are a villager. When you die, you can kill up to two people.",Kill,Town
+108,2,Blind Hunter,"You are a villager. When you die, choose another player. That player chooses to kill someone.",Kill,Town
+109,-1,Villager with a bomb,"If you are killed during the day by being downvoted, whoever nominated you FIRST dies",Villager,Town
+110,2,Martyr,"When you die, choose one person and they cannot die during the next night phase.",Medic,Town
+111,3,Warlock,"You are a villager. When you die, you may shoot someone, and you may choose someone to be protected the next night.",Witch,Town
+112,2,Nark,"You are a villager. When you die, choose two players by messaging the mod. The first player's role will be messaged to the second player.",Vision,Town
+113,3,True-Name Hunter,"You are a villager. When you die, choose another player. That player's role will be revealed to the village.",Vision,Town
+114,3,King,"You are a villager. Once per game you get to 100% decide the vote (add a crown emote to a vote to use this power, the vote will go whichever direction your thumb goes)",Voting,Town
+115,-1,Village Idiot,You must vote down on all nominations.,Voting,Town
+116,0,Gremlin,"You are on the village team. If there is ever a vote with all upvotes, you die.",Villager,Town
+117,-1,Village Pacifist,You must vote up on all nominations.,Voting,Town
+118,3,Mayor,Your vote counts as two.,Voting,Town
+119,1,Super Confused,You are a villager. Your downvotes count as upvotes and your upvotes count as downvotes.,Voting,Town
+120,-1,Downvote Boy,"You are a villager. Your downvotes are worth 2, your upvotes are worth nothing.",Voting,Town
+121,1,The Shill,"You are a villager, you must defend _____ if they are accused, and cannot vote down on him/her.",Social,Town
+122,1,Villager with a grudge,You are a villager. Each day you have to nominate ____,Voting,Town
+123,2,The Watcher,"Every night choose anger or calm. The next day your upvotes are worth double if you choose calm, or your downvotes are worth double if you choose anger.",Voting,Town
+124,0,Bloodthirsty Villager,"While you are alive, tied votes kill people",Voting,Town
+125,4,The Ironclad,"Every time you are nominated and live through a vote, your vote on subsequent nominations is worth +1.",Voting,Town
+126,3,Beautiful Villager,Upvotes against you count twice,Voting,Town
+127,1,Snakeoil Salesman,Your vote counts for two on the first vote of the day.,Voting,Town
+128,-2,Hypochondriac,"You are a villager. As long as you are alive, healing roles will target you every night (they will not be told that their role is being messed with).",Chaos,Town
+129,-2,Gravekeeper,"When all gravekeepers are dead, roles will no longer be revealed on death (your role will be revealed to the down, but you will be the last one).",Info,Town
+130,-3,Skeptic,"You are on the village team. As long as you are alive, seeing roles recieve opposite information. When you die this goes away. (Werewolves kill before seer looks)",Info,Town
+131,-3,Tasty Villager,"You are a villager. If the wolves eat you, they get two kills the next night.",Villager,Town
+132,-2,Villager in love,"At the start of the game, choose someone to be in love with. If they die, you die too.",Villager,Town
+133,-2,Hairy Villager,"If the seer looks at you, you look like a werewolf.",Info,Town
+134,-1,Cemetary Owner,Only you are told the role of dead players,Info,Town
+135,-1,Jester,You are a villager. You win the game if the wolves are all dead AND the seer dies.,Villager,Town
+136,-2,Fragile Villager,"If the seer looks at you, you die",Villager,Town
+137,-1,Smelly Villager,Downvotes against you count twice,Villager,Town
+138,-1,Abraham Lincoln,"You are a villager. As long as you are alive, roles that shoot will always target you every night (they will not be told that their role is being messed with).",Chaos,Town
+139,-1,Goblin,"You are a villager. If a vote is ever tied, you die",Villager,Town
