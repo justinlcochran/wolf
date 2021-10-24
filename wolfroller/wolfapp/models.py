@@ -21,8 +21,10 @@ class Choice(models.Model):
 	question = models.ForeignKey(Question, on_delete=models.CASCADE)
 	choice_text = models.CharField(max_length=200)
 	votes = models.IntegerField(default=0)
+
 	def __str__(self):
 		return self.choice_text
+
 
 class Role(models.Model):
 	game_score = models.IntegerField()
@@ -33,3 +35,10 @@ class Role(models.Model):
 
 	def __str__(self):
 		return self.role_title
+
+
+class Player(models.Model):
+	name = models.CharField(max_length=50)
+
+	def __str__(self):
+		return self.name

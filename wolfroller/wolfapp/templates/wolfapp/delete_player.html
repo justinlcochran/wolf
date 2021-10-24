@@ -1,0 +1,14 @@
+{%  extends 'wolfapp/index.html' %}
+{% load static %}
+{% block content %}
+
+<div>
+<p>Are you sure you want to delete {{ player }}?</p>
+
+<form action="{% url delete player.id %}" method="post">
+    {% csrf_token %}
+    <button><input type="submit" name="Confirm"></button>
+</form>
+</div>
+
+{% endblock %}

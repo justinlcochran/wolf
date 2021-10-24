@@ -1,20 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+.switch {
+position: relative;
+display: inline-block;
+width: 60px;
+height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+-webkit-transition: .4s;
+transition: .4s;
+}
+
+.slider:before {
+position: absolute;
+content: "";
+height: 26px;
+width: 26px;
+left: 4px;
+bottom: 4px;
+background-color: white;
+-webkit-transition: .4s;
+transition: .4s;
+}
+
+input:checked + .slider {
+background-color: #2196F3;
+}
+
+input:focus + .slider {
+box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+-webkit-transform: translateX(26px);
+-ms-transform: translateX(26px);
+transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+border-radius: 34px;
+}
+
+.slider.round:before {
+border-radius: 50%;
+}
+</style>
 </head>
-<body>
-<div style="width: 33%; left: 0%; position: relative">
+<div style="width: 200px; left: 3%; top: 0%; position: relative">
 <h1>Role Types:</h1>
+<table style="width:100%">
 
-{% for role in role_list %}
-    <p>{{role.role_title}}</p>
+    {% for type in role_types %}
+        <tr>
+        <td>{{type}}</td>
+        <td><label class="switch">
+            <id name="Switch.{{ type }}">
+                <input type="checkbox" checked>
+                <span class="slider round"></span>
+        </label></td>
+    {%  endfor %}
+    </tr>
+    </table>
+<h1>Wolves:</h1>
 
-{% endfor %}
+<body>
+    <input type="button" value="-" id="dec" onclick="decNumber()"/>
+    <label style="padding: 10px; font-size: 200%; color: teal; font-weight: 500" id="wolves">0</label>
+    <input type="button" value="+" id="inc" onclick="incNumber()"/>
+
+
+
+    <script type="text/javascript">
+
+    var i = 0;
+
+    function incNumber() {
+        if (i < 10) {
+            i++;
+        } else if (i = 10) {
+            i = 0;
+        }
+        document.getElementById("wolves").innerHTML = i;
+    }
+
+    function decNumber() {
+        if (i > 0) {
+            --i;
+        } else if (i = 0) {
+            i = 10;
+        }
+        document.getElementById("wolves").innerHTML = i;
+    }
+    </script>
+</body>
+
 </div>
-<div style="width: 33%; left: 66%; top: 10%; position: absolute">
-    <textarea></textarea>
+<div style="left: 45%; width: 15%; top: 0%; position: absolute;">
+
+    <li></li>
+</div>
+<div style="width: 200px; left: 60%; top: 0%; position: absolute">
+    <h1>Player List</h1>
+    <form action="" method="POST" >
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" name="Submit">
+    </form>
+
+    <table>
+        <tr>
+            <th>Players</th>
+        </tr>
+
+        {% for player in player_list %}
+        <tr>
+            <td>{{ player }}</td>
+            <td><a class="btn btn-sm btn-danger" href={% url 'wolfapp:delete' player.id %}>X</a></td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <button name="Confirm Delete">Confirm Delete</button>
+    </form>
 </div>
 </body>
 </html>

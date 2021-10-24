@@ -1,43 +1,70 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.urls import reverse
-from .models import Role, Choice, Question
+from .models import Role, Choice, Question, Player
+from .forms import PlayerForm
 
 
 def index(request):
-    role_list = Role.objects.all()
-    context = {'role_list': role_list}
-    return render(request, 'wolfapp/index.html', context)
+	role_list = Role.objects.all()
+	role_types = list(set([i.role_type for i in role_list]))
+	role_types.sort()
+	form = PlayerForm()
+	player_list = Player.objects.all()
+
+	if "Submit" in request.POST:
+		if request.method == 'POST':
+			form = PlayerForm(request.POST)
+			if form.is_valid():
+				form.save()
+
+	negative_town_roles = [i for i in role_list if
+	                       i.game_score < 0 and i.role_alignment == "Town" or i.role_type == "Minion"]
+	positive_town_roles = [i for i in role_list if 0 <= i.game_score]
+	wolf_roles = [i for i in role_list if i.role_type == "Wolf"]
+	wolf_number = 0
+
+	context = {
+		'role_list': role_list,
+		'role_types': role_types,
+		'wolf_number': wolf_number,
+		'negative_town_roles': negative_town_roles,
+		'positive_town_roles': positive_town_roles,
+		'wolf_roles': wolf_roles,
+		'form': form,
+		'player_list': player_list,
+
+	}
+
+	return render(request, 'wolfapp/index.html', context)
 
 
-def detail(request, question_id):
-    try:
-        question = Question.objects.get(pk=question_id)
-    except Question.DoesNotExist:
-        raise Http404("Question does not exist")
-    return render(request, 'wolfapp/detail.html', {'question': question})
+def delete(request, pk):
+	role_list = Role.objects.all()
+	role_types = list(set([i.role_type for i in role_list]))
+	role_types.sort()
+	form = PlayerForm()
+	player_list = Player.objects.all()
 
+	negative_town_roles = [i for i in role_list if
+	                       i.game_score < 0 and i.role_alignment == "Town" or i.role_type == "Minion"]
+	positive_town_roles = [i for i in role_list if 0 <= i.game_score]
+	wolf_roles = [i for i in role_list if i.role_type == "Wolf"]
+	wolf_number = 0
 
-def results(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'wolfapp/results.html', {'question': question})
+	player = Player.objects.get(id=pk)
+	if request.method == "POST":
+		player.delete()
+		return redirect('/wolfapp')
 
-
-def vote(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    try:
-        selected_choice = question.choice_set.get(pk=request.POST['choice'])
-    except (KeyError, Choice.DoesNotExist):
-        # Redisplay the question voting form.
-        return render(request, 'wolfapp/detail.html', {
-            'question': question,
-            'error_message': "You didn't select a choice.",
-        })
-    else:
-        selected_choice.votes += 1
-        selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return HttpResponseRedirect(reverse('wolfapp:results', args=(question.id,)))
-# Create your views here.
+	context = {'player': player,
+	           'role_list': role_list,
+	           'role_types': role_types,
+	           'wolf_number': wolf_number,
+	           'negative_town_roles': negative_town_roles,
+	           'positive_town_roles': positive_town_roles,
+	           'wolf_roles': wolf_roles,
+	           'form': form,
+	           'player_list': player_list,
+	           }
+	return render(request, 'wolfapp/delete_player.html', context)
