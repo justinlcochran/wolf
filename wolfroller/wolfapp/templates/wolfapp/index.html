@@ -80,46 +80,44 @@ border-radius: 50%;
 <h1>Wolves:</h1>
 
 <body>
-    <input type="button" value="-" id="dec" onclick="decNumber()"/>
-    <label style="padding: 10px; font-size: 200%; color: teal; font-weight: 500" id="wolves">0</label>
-    <input type="button" value="+" id="inc" onclick="incNumber()"/>
-
-
-
-    <script type="text/javascript">
-
-    var i = 0;
-
-    function incNumber() {
-        if (i < 10) {
-            i++;
-        } else if (i = 10) {
-            i = 0;
-        }
-        document.getElementById("wolves").innerHTML = i;
-    }
-
-    function decNumber() {
-        if (i > 0) {
-            --i;
-        } else if (i = 0) {
-            i = 10;
-        }
-        document.getElementById("wolves").innerHTML = i;
-    }
-    </script>
+    <table>
+        <tr>
+            <td><form action="{% url 'wolfapp:wolfcounter' down %}" method="POST" id="decrease_wolfcounter" name="wolfDown">
+                {% csrf_token %}
+                <input type="submit" value="-">
+            </form>
+                </td>
+    <td><label style="padding: 10px; font-size: 200%; color: teal; font-weight: 500" id="wolves">{{ wolfcount }}</label></td>
+    <td><form action="{% url 'wolfapp:wolfcounter' up %}" method="POST" id="increase_wolfcounter" name="wolfUp">
+                {% csrf_token %}
+                <input type="submit" value="+">
+            </form>
+    </td>
+        </tr>
+</table>
 </body>
 
 </div>
-<div style="left: 45%; width: 15%; top: 0%; position: absolute;">
+<div style="left: 25%; width: 25%; top: 0%; position: absolute;">
 
-    <li></li>
+    <form action="{% url 'wolfapp:roll'  %}" method="POST" name="rollButton">
+                {% csrf_token %}
+                <input type="submit" value="Roll">
+            </form>
+    <table>
+    {% for i in role_assignments %}
+    <tr>
+        <td style="padding-right: 20px;">{{ i.player_name }}</td><td>{{ i.role_title }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+
 </div>
 <div style="width: 200px; left: 60%; top: 0%; position: absolute">
     <h1>Player List</h1>
-    <form action="" method="POST" >
+    <form action="" method="POST">
         {% csrf_token %}
-        {{ form }}
+        {{ player_form }}
         <input type="submit" name="Submit">
     </form>
 
@@ -130,17 +128,17 @@ border-radius: 50%;
 
         {% for player in player_list %}
         <tr>
-            <td>{{ player }}</td>
-            <td><a class="btn btn-sm btn-danger" href={% url 'wolfapp:delete' player.id %}>X</a></td>
+            <td style="padding-right:30px;">{{ player }}</td>
+            <td><form action="{% url 'wolfapp:delete' player.id %}" method="POST" id="{{ player.id }}" name="delButton">
+                {% csrf_token %}
+                <input type="submit" value="X">
+            </form>
+            </td>
         </tr>
 
         {% endfor %}
 
     </table>
-    <form action="" method="POST">
-        {% csrf_token %}
-        <button name="Confirm Delete">Confirm Delete</button>
-    </form>
 </div>
 </body>
 </html>
