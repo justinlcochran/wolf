@@ -55,4 +55,4 @@ class RoleAssignment(models.Model):
 	role_alignment = models.CharField(max_length=200)
 
 	def __str__(self):
-		return self.role_title, self.player_name
+		return self.role_title

@@ -25,8 +25,7 @@ def index(request):
 
 	print(request.body)
 
-	negative_town_roles = [i for i in role_list if
-	                       i.game_score < 0 and i.role_alignment == "Town" or i.role_type == "Minion"]
+	negative_town_roles = [i for i in role_list if i.game_score < 0 and i.role_alignment == "Town"]
 	positive_town_roles = [i for i in role_list if 0 <= i.game_score]
 	wolf_roles = [i for i in role_list if i.role_type == "Wolf"]
 	wolf_number = 0
@@ -78,9 +77,8 @@ def roll(request):
 	player_list = list(Player.objects.all())
 	wolfcount = WolfNumber.objects.all()[0].number
 
-	negative_town_roles = [i for i in role_list if
-	                       i.game_score < 0 and i.role_alignment == "Town" or i.role_type == "Minion"]
-	positive_town_roles = [i for i in role_list if 0 <= i.game_score]
+	negative_town_roles = [i for i in role_list if i.game_score < 0 and i.role_alignment == "Town"]
+	positive_town_roles = [i for i in role_list if i.game_score >= 0]
 	wolf_roles = [i for i in role_list if i.role_type == "Wolf"]
 
 	RoleAssignment.objects.all().delete()
@@ -91,9 +89,9 @@ def roll(request):
 		game_score = 0
 		for i in roles_list:
 			game_score += i.game_score
-		if game_score < 0:
+		if game_score > 0:
 			roles_list.append(random.choice(negative_town_roles))
-		elif game_score >= 0:
+		elif game_score <= 0:
 			roles_list.append(random.choice(positive_town_roles))
 
 	game_score = 0
@@ -104,6 +102,7 @@ def roll(request):
 	for i in range(len(roles_list)):
 		form = RoleAssignment(player_name=player_list[i].name, role_title=roles_list[i].role_title, role_alignment=roles_list[i].role_alignment, role_score=roles_list[i].game_score)
 		form.save()
+	print(roles_list, player_list)
 	return redirect('/wolfapp')
 
 

@@ -5,6 +5,14 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+        body {
+            padding: 25px;
+            background-color: dimgray;
+            color: blanchedalmond;
+            font-size: 25px
+
+        }
+
 .switch {
 position: relative;
 display: inline-block;
@@ -61,7 +69,7 @@ border-radius: 34px;
 border-radius: 50%;
 }
 </style>
-</head>
+</head><body>
 <div style="width: 200px; left: 3%; top: 0%; position: relative">
 <h1>Role Types:</h1>
 <table style="width:100%">
@@ -79,7 +87,7 @@ border-radius: 50%;
     </table>
 <h1>Wolves:</h1>
 
-<body>
+
     <table>
         <tr>
             <td><form action="{% url 'wolfapp:wolfcounter' down %}" method="POST" id="decrease_wolfcounter" name="wolfDown">
@@ -87,7 +95,7 @@ border-radius: 50%;
                 <input type="submit" value="-">
             </form>
                 </td>
-    <td><label style="padding: 10px; font-size: 200%; color: teal; font-weight: 500" id="wolves">{{ wolfcount }}</label></td>
+    <td><label style="padding: 10px; font-size: 200%; font-weight: 500" id="wolves">{{ wolfcount }}</label></td>
     <td><form action="{% url 'wolfapp:wolfcounter' up %}" method="POST" id="increase_wolfcounter" name="wolfUp">
                 {% csrf_token %}
                 <input type="submit" value="+">
@@ -95,7 +103,7 @@ border-radius: 50%;
     </td>
         </tr>
 </table>
-</body>
+
 
 </div>
 <div style="left: 25%; width: 25%; top: 0%; position: absolute;">
@@ -104,11 +112,12 @@ border-radius: 50%;
                 {% csrf_token %}
                 <input type="submit" value="Roll">
             </form>
-    <table>
+    <table >
     {% for i in role_assignments %}
-    <tr>
-        <td style="padding-right: 20px;">{{ i.player_name }}</td><td>{{ i.role_title }}</td>
+    <tr style="border-bottom: 2px solid black">
+        <td style="padding: 20px;">{{ i.player_name }}</td><td>{{ i.role_title }}</td>{% if i.role_alignment == "Evil" %}<td><img src="https://ucarecdn.com/027f7b3a-0220-4d7f-9f9a-46d3d4b59a82/Untitleddesign.png" style="height:35px;"/></td>{% endif %}
     </tr>
+
     {% endfor %}
     </table>
 
