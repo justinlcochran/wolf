@@ -21,5 +21,6 @@ urlpatterns = [
 	path('', views.index, name='index'),
 	path('delete/<str:pk>/', views.delete, name="delete"),
 	path('roll/', views.roll, name="roll"),
-	path('wolfcount/<str:direction>/', views.wolfcounter, name="wolfcounter")
+	path('wolfcount/<str:direction>/', views.wolfcounter, name="wolfcounter"),
+	path('update/<str:pk>/', views.update_toggle, name="update_toggle")
 ]

@@ -76,12 +76,15 @@ border-radius: 50%;
 
     {% for type in role_types %}
         <tr>
-        <td>{{type}}</td>
-        <td><label class="switch">
-            <id name="Switch.{{ type }}">
-                <input type="checkbox" checked>
-                <span class="slider round"></span>
-        </label></td>
+        {% if type.toggle%}
+            <td style="color:blanchedalmond">{{type.role_type}}</td>
+        {% else  %}
+            <td style="color: gray"><strike>{{type.role_type}}</strike></td>
+        {% endif %}
+        <td><form action="{% url 'wolfapp:update_toggle' type.id %}" method="POST" id="{{ type.id }}" name="updateButton">
+                {% csrf_token %}
+                <input type="submit" style="color: #2196F3; border-radius: 100px; " value="O">
+            </form></td>
     {%  endfor %}
     </tr>
     </table>
@@ -108,10 +111,7 @@ border-radius: 50%;
 </div>
 <div style="left: 25%; width: 25%; top: 0%; position: absolute;">
 
-    <form action="{% url 'wolfapp:roll'  %}" method="POST" name="rollButton">
-                {% csrf_token %}
-                <input type="submit" value="Roll">
-            </form>
+
     <table >
     {% for i in role_assignments %}
     <tr style="border-bottom: 2px solid black">
@@ -121,6 +121,10 @@ border-radius: 50%;
     {% endfor %}
     </table>
 
+  <form action="{% url 'wolfapp:roll'  %}" method="POST" name="rollButton">
+                {% csrf_token %}
+                <input type="submit" value="Roll">
+            </form>
 </div>
 <div style="width: 200px; left: 60%; top: 0%; position: absolute">
     <h1>Player List</h1>

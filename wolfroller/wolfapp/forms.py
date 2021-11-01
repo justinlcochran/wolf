@@ -5,3 +5,4 @@ class PlayerForm(ModelForm):
 	class Meta:
 		model = Player
 		fields = ['name']
+
