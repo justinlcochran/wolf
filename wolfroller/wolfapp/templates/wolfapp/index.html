@@ -106,7 +106,10 @@ border-radius: 50%;
     </td>
         </tr>
 </table>
-
+<form action="{% url 'wolfapp:roll'  %}" method="POST" name="rollButton">
+                {% csrf_token %}
+                <input type="submit" value="Roll">
+            </form>
 
 </div>
 <div style="left: 25%; width: 25%; top: 0%; position: absolute;">
@@ -114,24 +117,75 @@ border-radius: 50%;
 
     <table >
     {% for i in role_assignments %}
-    <tr style="border-bottom: 2px solid black">
-        <td style="padding: 20px;">{{ i.player_name }}</td><td>{{ i.role_title }}</td>{% if i.role_alignment == "Evil" %}<td><img src="https://ucarecdn.com/027f7b3a-0220-4d7f-9f9a-46d3d4b59a82/Untitleddesign.png" style="height:35px;"/></td>{% endif %}
-    </tr>
-
+        {% if i.locked == True %}
+            <tr style="border-bottom: 2px solid black">
+                <td style="padding: 20px;">{{ i.player_name }}</td>
+                <td>{{ i.role_title }}</td>
+                    <td>
+                        {% if i.role_alignment == "Evil" %}
+                        <img src="https://ucarecdn.com/027f7b3a-0220-4d7f-9f9a-46d3d4b59a82/Untitleddesign.png" style="height:35px;"/>
+                    {% endif %}
+                    </td>
+                <td>
+                    {% if i.locked == False %}
+                        <form action="{% url 'wolfapp:update_lock' i.id %}" method="post">
+                        {% csrf_token %}
+                            <button type="submit" style="background-color: cadetblue" >
+                                <img src="https://ucarecdn.com/94a19923-ffde-4ef3-a3eb-d2f34fd5e390/Unlocked.png" style="height:55px;" />
+                            </button>
+                        </form>
+                    {% else %}
+                        <form action="{% url 'wolfapp:update_lock' i.id %}" method="post">
+                        {% csrf_token %}
+                            <button type="submit" style="background-color: darkred" >
+                                <img src="https://ucarecdn.com/f60b8c03-44c8-44c0-8f34-e52d82bc59e5/Locked.png" style="height: 55px;" />
+                            </button>
+                        </form>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    {% for i in role_assignments %}
+        {% if i.locked == False %}
+        <tr style="border-bottom: 2px solid black">
+            <td style="padding: 20px;">{{ i.player_name }}</td>
+            <td>{{ i.role_title }}</td>
+                <td>
+                    {% if i.role_alignment == "Evil" %}
+                    <img src="https://ucarecdn.com/027f7b3a-0220-4d7f-9f9a-46d3d4b59a82/Untitleddesign.png" style="height:35px;"/>
+                {% endif %}
+                </td>
+            <td>
+                {% if i.locked == False %}
+                    <form action="{% url 'wolfapp:update_lock' i.id %}" method="post">
+                    {% csrf_token %}
+                        <button type="submit" style="background-color: cadetblue" >
+                            <img src="https://ucarecdn.com/94a19923-ffde-4ef3-a3eb-d2f34fd5e390/Unlocked.png" style="height:55px;" />
+                        </button>
+                    </form>
+                {% else %}
+                    <form action="{% url 'wolfapp:update_lock' i.id %}" method="post">
+                    {% csrf_token %}
+                        <button type="submit" style="background-color: darkred" >
+                            <img src="https://ucarecdn.com/f60b8c03-44c8-44c0-8f34-e52d82bc59e5/Locked.png" style="height: 55px;" />
+                        </button>
+                    </form>
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
     {% endfor %}
     </table>
+<p>Game Score: {{ game_score }}</p>
 
-  <form action="{% url 'wolfapp:roll'  %}" method="POST" name="rollButton">
-                {% csrf_token %}
-                <input type="submit" value="Roll">
-            </form>
 </div>
 <div style="width: 200px; left: 60%; top: 0%; position: absolute">
     <h1>Player List</h1>
-    <form action="" method="POST">
+    <form action="" method="POST" autofocus>
         {% csrf_token %}
         {{ player_form }}
-        <input type="submit" name="Submit">
+        <input type="submit" name="Submit"><br><br>
     </form>
 
     <table>

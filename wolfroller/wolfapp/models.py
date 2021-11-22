@@ -30,7 +30,7 @@ class RoleType(models.Model):
 	role_type = models.CharField(max_length=200, unique=True)
 
 class Role(models.Model):
-	game_score = models.IntegerField()
+	role_score = models.IntegerField()
 	role_title = models.CharField(max_length=200)
 	role_description = models.CharField(max_length=400)
 	role_type = models.ForeignKey(RoleType, on_delete=models.CASCADE, related_name='type', to_field='role_type', default="Villager")
@@ -57,6 +57,7 @@ class RoleAssignment(models.Model):
 	role_title = models.CharField(max_length=200)
 	player_name = models.CharField(max_length=200)
 	role_alignment = models.CharField(max_length=200)
+	locked = models.BooleanField(default=False)
 
 	def __str__(self):
 		return self.role_title

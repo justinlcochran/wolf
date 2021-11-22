@@ -13,6 +13,9 @@ def index(request):
 	player_list = Player.objects.all()
 	wolfcount = WolfNumber.objects.all()[0].number
 	role_assignments = RoleAssignment.objects.all()
+	game_score = 0
+	for i in role_assignments:
+		game_score += i.role_score
 	down = -1
 	up = 1
 
@@ -31,6 +34,7 @@ def index(request):
 		'down': down,
 		'up': up,
 		'role_assignments': role_assignments,
+		'game_score': game_score,
 
 	}
 
@@ -55,18 +59,31 @@ def roll(request):
 	player_list = list(Player.objects.all())
 	wolfcount = WolfNumber.objects.all()[0].number
 
-	negative_town_roles = [i for i in role_list if i.game_score < 0 and i.role_alignment == "Town"]
-	positive_town_roles = [i for i in role_list if i.game_score >= 0]
+	negative_town_roles = [i for i in role_list if i.role_score < 0 and i.role_alignment == "Town"]
+	positive_town_roles = [i for i in role_list if i.role_score >= 0]
 	wolf_roles = [i for i in role_list if i.role_type_id == "Wolf"]
 
-	RoleAssignment.objects.all().delete()
+	RoleAssignment.objects.filter(locked=False).delete()
+	locked_game = list(RoleAssignment.objects.all())
 	roles_list = []
-	for i in range(wolfcount):
+	locked_roles = []
+	for i in locked_game:
+		roles_list.append(Role.objects.filter(role_title=i.role_title).get())
+		locked_roles.append(Role.objects.filter(role_title=i.role_title).get())
+
+	print(roles_list)
+
+	new_wolfcount = wolfcount - len([i for i in roles_list if i.role_alignment == "Evil"])
+	print(new_wolfcount)
+
+	RoleAssignment.objects.all().delete()
+
+	for i in range(new_wolfcount):
 		roles_list.append(random.choice(wolf_roles))
 	while len(player_list) > len(roles_list):
 		game_score = 0
 		for i in roles_list:
-			game_score += i.game_score
+			game_score += i.role_score
 		if game_score > 0:
 			roles_list.append(random.choice(negative_town_roles))
 		elif game_score <= 0:
@@ -74,13 +91,12 @@ def roll(request):
 
 	game_score = 0
 	for i in roles_list:
-		game_score += i.game_score
+		game_score += i.role_score
 	random.shuffle(roles_list)
 	random.shuffle(player_list)
 	for i in range(len(roles_list)):
-		form = RoleAssignment(player_name=player_list[i].name, role_title=roles_list[i].role_title, role_alignment=roles_list[i].role_alignment, role_score=roles_list[i].game_score)
+		form = RoleAssignment(player_name=player_list[i].name, role_title=roles_list[i].role_title, role_alignment=roles_list[i].role_alignment, role_score=roles_list[i].role_score, locked=True if roles_list[i] in locked_roles else False)
 		form.save()
-	print(roles_list, player_list)
 	return redirect('/wolfapp')
 
 
@@ -98,6 +114,16 @@ def update_toggle(request, pk):
 		role_type.save()
 	else:
 		role_type.toggle = True
+		role_type.save()
+	return redirect('/wolfapp')
+
+def update_lock(request, pk):
+	role_type = RoleAssignment.objects.get(id=pk)
+	if role_type.locked:
+		role_type.locked = False
+		role_type.save()
+	else:
+		role_type.locked = True
 		role_type.save()
 	return redirect('/wolfapp')
 
