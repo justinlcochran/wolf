@@ -1,11 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.urls import reverse
-from .models import Role, Choice, Question, Player, RoleAssignment, WolfNumber, RoleType
-from .forms import PlayerForm
+from .models import Role, Player, RoleAssignment, WolfNumber, RoleType
+from .forms import PlayerForm, CreateUserForm
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 import random
 
-
+@login_required(login_url='/wolfapp/login')
 def index(request):
 	role_list = Role.objects.all()
 	role_types = RoleType.objects.all()
@@ -95,7 +98,7 @@ def roll(request):
 	random.shuffle(roles_list)
 	random.shuffle(player_list)
 	for i in range(len(roles_list)):
-		form = RoleAssignment(player_name=player_list[i].name, role_title=roles_list[i].role_title, role_alignment=roles_list[i].role_alignment, role_score=roles_list[i].role_score, locked=True if roles_list[i] in locked_roles else False)
+		form = RoleAssignment(player_name=player_list[i].name, role_title=roles_list[i].role_title, role_alignment=roles_list[i].role_alignment, role_score=roles_list[i].role_score, role_description=roles_list[i].role_description, locked=True if roles_list[i] in locked_roles else False)
 		form.save()
 	return redirect('/wolfapp')
 
@@ -127,4 +130,38 @@ def update_lock(request, pk):
 		role_type.save()
 	return redirect('/wolfapp')
 
+def loginPage(request):
 
+	if request.method == "POST":
+		username = request.POST.get('username')
+		password = request.POST.get('password')
+
+		user = authenticate(request, username=username, password=password)
+		if user is not None:
+			login(request, user)
+			return redirect('/wolfapp')
+
+		else:
+			messages.info(request, "Username or Password is incorrect")
+
+
+	context = {}
+	return render(request, 'wolfapp/login.html', context)
+
+def logoutPage(request):
+	logout(request)
+	return redirect('/wolfapp/login')
+
+def register(request):
+	form = CreateUserForm()
+
+	if request.method == 'POST':
+		form = CreateUserForm(request.POST)
+		if form.is_valid():
+			form.save()
+			user = form.cleaned_data.get('username')
+			messages.success(request, "Account Created: " + user)
+			return redirect('/wolfapp/login')
+
+	context = {'form': form,}
+	return render(request, 'wolfapp/register.html', context)

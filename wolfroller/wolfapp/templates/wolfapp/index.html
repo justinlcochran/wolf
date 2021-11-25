@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Wolf Roller</title>
     <style>
         body {
             padding: 25px;
@@ -12,6 +12,64 @@
             font-size: 25px
 
         }
+/* Popup container - can be anything you want */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 450px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -225px;
+  opacity: 90%;
+
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn .4s;
+  animation: fadeIn .4s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 0.9;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:0.9 ;}
+}
 
 .switch {
 position: relative;
@@ -69,8 +127,14 @@ border-radius: 34px;
 border-radius: 50%;
 }
 </style>
-</head><body>
-<div style="width: 200px; left: 3%; top: 0%; position: relative">
+</head>
+<body>
+<div style="height: 1.5%; text-align: right;">
+    <p>Welcome {{ request.user }}!</p>
+    <p><a style="color: blanchedalmond" href="{% url 'wolfapp:logoutPage' %}">logout</a></p>
+
+</div>
+<div style="width: 200px; left: 3%; top: 1.5%; position: absolute">
 <h1>Role Types:</h1>
 <table style="width:100%">
 
@@ -112,7 +176,7 @@ border-radius: 50%;
             </form>
 
 </div>
-<div style="left: 25%; width: 25%; top: 0%; position: absolute;">
+<div style="left: 25%; width: 25%; top: 15%; position: absolute;">
 
 
     <table >
@@ -120,7 +184,12 @@ border-radius: 50%;
         {% if i.locked == True %}
             <tr style="border-bottom: 2px solid black">
                 <td style="padding: 20px;">{{ i.player_name }}</td>
-                <td>{{ i.role_title }}</td>
+                <td>
+                    <div class="popup" onclick="myFunction('{{ i.role_title }}')">{{ i.role_title }}
+                    <span class="popuptext" id="{{ i.role_title }}">{{ i.role_description }}</span>
+                </div>
+
+                </td>
                     <td>
                         {% if i.role_alignment == "Evil" %}
                         <img src="https://ucarecdn.com/027f7b3a-0220-4d7f-9f9a-46d3d4b59a82/Untitleddesign.png" style="height:35px;"/>
@@ -150,7 +219,12 @@ border-radius: 50%;
         {% if i.locked == False %}
         <tr style="border-bottom: 2px solid black">
             <td style="padding: 20px;">{{ i.player_name }}</td>
-            <td>{{ i.role_title }}</td>
+            <td>
+                <div class="popup" onclick="myFunction('{{ i.role_title }}')">{{ i.role_title }}
+                    <span class="popuptext" id="{{ i.role_title }}">{{ i.role_description }}</span>
+                </div>
+
+            </td>
                 <td>
                     {% if i.role_alignment == "Evil" %}
                     <img src="https://ucarecdn.com/027f7b3a-0220-4d7f-9f9a-46d3d4b59a82/Untitleddesign.png" style="height:35px;"/>
@@ -180,7 +254,7 @@ border-radius: 50%;
 <p>Game Score: {{ game_score }}</p>
 
 </div>
-<div style="width: 200px; left: 60%; top: 0%; position: absolute">
+<div style="width: 200px; left: 60%; top: 1.5%; position: absolute">
     <h1>Player List</h1>
     <form action="" method="POST" autofocus>
         {% csrf_token %}
@@ -207,5 +281,14 @@ border-radius: 50%;
 
     </table>
 </div>
+
+<script>
+// When the user clicks on div, open the popup
+function myFunction(pk) {
+  var popup = document.getElementById(pk);
+  popup.classList.toggle("show");
+}
+</script>
+
 </body>
 </html>

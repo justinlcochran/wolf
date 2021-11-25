@@ -55,6 +55,7 @@ class WolfNumber(models.Model):
 class RoleAssignment(models.Model):
 	role_score = models.IntegerField()
 	role_title = models.CharField(max_length=200)
+	role_description = models.CharField(max_length=400)
 	player_name = models.CharField(max_length=200)
 	role_alignment = models.CharField(max_length=200)
 	locked = models.BooleanField(default=False)

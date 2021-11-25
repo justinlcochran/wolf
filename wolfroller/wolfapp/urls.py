@@ -23,5 +23,9 @@ urlpatterns = [
 	path('roll/', views.roll, name="roll"),
 	path('wolfcount/<str:direction>/', views.wolfcounter, name="wolfcounter"),
 	path('updatetoggle/<str:pk>/', views.update_toggle, name="update_toggle"),
-path('updatelock/<str:pk>/', views.update_lock, name="update_lock")
+	path('updatelock/<str:pk>/', views.update_lock, name="update_lock"),
+	path('login/', views.loginPage, name="loginPage"),
+	path('logout/', views.logoutPage, name="logoutPage"),
+	path('register/', views.register, name="register"),
+
 ]
